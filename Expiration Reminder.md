@@ -15,32 +15,32 @@ Assume you want to record expiration email in excel and send reminder email, her
 ## VBA macro list 
 
 **Sub GenExpirationList()**
-```
-' generate expiration list in excel 
-' - it scans email subject with keyword Expire/Expired/Expiration on all emails under outlook folder Dev\reminder, you can change keyword and subfolder location 
-' - generate new sheet <active-sheetname>-expiration to include scan result - sender, date and email body in descending order
-```
+
+generate expiration list in excel 
+- it scans email subject with keyword Expire/Expired/Expiration on all emails under outlook folder Dev\reminder, you can change keyword and subfolder location 
+- generate new sheet <active-sheetname>-expiration to include scan result - sender, date and email body in descending order
+
 **Sub SendReminderEmail()**
-```
-' send expiration reminder email from outlook 
-' - scan record from active sheet with table column 'Customer' and 'Expiration Date'
-' - reminder email with detail if expiration date less than 7 days or closet expiration date entries 
-```
+
+send expiration reminder email from outlook 
+- scan record from active sheet with table column 'Customer' and 'Expiration Date'
+- reminder email with detail if expiration date less than 7 days or closet expiration date entries 
+
 Private Function GetInfoFromEmailBody(emailBody As String, infoLabel As String) As String
-```
-' get info from outlook email body with keyword
-```
+
+get info from outlook email body with keyword
+
 **Sub FormatActiveSheet()**
-```
-' format whole range of visiable cells on active sheet 
-' - font: Calibri size 11 
-' - color: from color picker 
-' - cell border: solid black line 
-' - auto fit cell content
-```
+
+format whole range of visiable cells on active sheet 
+- font: Calibri size 11
+- color: from color picker 
+- cell border: solid black line 
+- auto fit cell content
+  
 Private Function ChooseColor() As Long
-```
-' color picker 
-' - pop up color picker 
-' - return selected color code
-```
+
+color picker
+- pop up color picker 
+- return selected color code
+
