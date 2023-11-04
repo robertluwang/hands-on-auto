@@ -1,2 +1,2 @@
 # hands-on-auto
-Hands-on auto practise on daily work
+Hands on auto practise on daily work
