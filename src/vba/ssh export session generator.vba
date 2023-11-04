@@ -39,21 +39,12 @@ Sub ScrtExport()
         Dim HostName As String
         Dim HostIP As String
         Dim RemotePort As String
-        Dim pType As String
         Dim Username As String
 
         HostName = Row.Cells(1).value
         HostIP = Row.Cells(2).value
         RemotePort = Row.Cells(3).value
-        pType = Row.Cells(4).value
-        Username = Row.Cells(5).value
-
-        ' Validate the "type" column
-        If LCase(pType) <> "cli" Then
-            MsgBox pType
-            MsgBox "Type should be 'cli' for all selected rows.", vbExclamation
-            Exit Sub
-        End If
+        Username = Row.Cells(4).value
 
         SecureCRTContent = SecureCRTContent & "            <key name=""" & CustomerName & "_" & HostName & """>" & vbNewLine
         SecureCRTContent = SecureCRTContent & "                <dword name=""[SSH2] Port"">" & RemotePort & "</dword>" & vbNewLine
@@ -124,20 +115,12 @@ Sub mobaExport()
         Dim HostName As String
         Dim HostIP As String
         Dim RemotePort As String
-        Dim pType As String
         Dim Username As String
 
         HostName = Row.Cells(1).value
         HostIP = Row.Cells(2).value
         RemotePort = Row.Cells(3).value
-        pType = LCase(Row.Cells(4).value)
-        Username = Row.Cells(5).value
-
-        ' Validate the "type" column
-        If pType <> "cli" Then
-            MsgBox "Type should be 'cli' for all selected rows.", vbExclamation
-            Exit Sub
-        End If
+        Username = Row.Cells(4).value
 
         MobaXtermContent = MobaXtermContent & HostName & "= #109#0%" & HostIP & "%" & RemotePort & "%" & Username & "%%-1%-1%%%%%0%0%0%%%-1%0%0%0%%1080%%0%0%1%%0%%%%0%-1%-1%0#MobaFont%10%0%0%-1%15%236,236,236%30,30,30%180,180,192%0%-1%0%%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%0#0# #-1" & vbNewLine
     Next Row
