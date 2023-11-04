@@ -1,4 +1,10 @@
 Sub ScrtExport()
+' secureCRT export session xml generator
+' - input data is selection of column Hostname,HostIP,RemotePort,Type,Username
+' - will generate session file .\Export\Session\scrt-<active-sheet>-<timestamp>.xml
+' - all sessions will be under folder which name from active sheet
+' - open generated secureCRT session file in notepad for review
+
     Dim SecureCRTFilePath As String
     Dim SecureCRTContent As String
     Dim SelectedRows As Range
@@ -78,8 +84,13 @@ Sub ScrtExport()
     Shell "notepad.exe """ & SecureCRTFilePath & """", vbNormalFocus
 End Sub
 
-'NT00016-MobaXterm setting export file generator for selected rows
 Sub mobaExport()
+' mobaXterm export session mxtsessions generator
+' - input data is selection of column Hostname,HostIP,RemotePort,Type,Username
+' - will generate session file .\Export\Session\\mobaxterm-<active-sheet>-<timestamp>.mxtsessions
+' - all sessions will be under folder which name from active sheet
+' - open generated mobaXterm session file in notepad for review
+
     Dim MobaXtermFilePath As String
     Dim MobaXtermContent As String
     Dim SelectedRows As Range
