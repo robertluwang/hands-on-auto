@@ -1,7 +1,7 @@
 Sub SendReminderEmail()
 ' send expiration reminder email from outlook 
-' scan record from active sheet with table column 'Customer'	'Expiration Date'
-' reminder email with detail if expiration date less than 7 days or closet expiration date entries 
+' - scan record from active sheet with table column 'Customer'	'Expiration Date'
+' - reminder email with detail if expiration date less than 7 days or closet expiration date entries 
 
     Dim ws As Worksheet
     Dim OutApp As Object
@@ -114,8 +114,8 @@ End Sub
 
 Sub GenExpirationList()
 ' generate expiration list in excel 
-' it scans email subject with keyword Expire/Expired/Expiration on all emails under outlook folder Dev\reminder 
-' generate new sheet <active-sheetname>-expiration to include scan result
+' - it scans email subject with keyword Expire/Expired/Expiration on all emails under outlook folder Dev\reminder, you can change keyword and subfolder location 
+' - generate new sheet <active-sheetname>-expiration to include scan result
     Dim olApp As Object
     Dim olNs As Object
     Dim olFolder As Object
@@ -252,10 +252,10 @@ End Function
 
 Sub FormatActiveSheet()
 ' format whole range of visiable cells on active sheet 
-' font: Calibri size 11 
-' color: from color picker 
-' cell border: solid black line 
-' auto fit cell content
+' - font: Calibri size 11 
+' - color: from color picker 
+' - cell border: solid black line 
+' - auto fit cell content
     Dim ws As Worksheet
     Dim lastRow As Long
     Dim lastColumn As Long
@@ -294,8 +294,9 @@ Sub FormatActiveSheet()
 End Sub
 
 Private Function ChooseColor() As Long
-' pop up color picker 
-' return selected color code
+' color picker 
+' - pop up color picker 
+' - return selected color code
                             
     ' Create variables for the color codes
     Dim FullColorCode As Long
@@ -304,8 +305,8 @@ Private Function ChooseColor() As Long
     If Application.Dialogs(xlDialogEditColor).Show(1) = True Then
         FullColorCode = ActiveWorkbook.Colors(1)
     Else
-        ' Default to black if the user cancels
-        FullColorCode = RGB(0, 0, 0)
+        ' Default to Grey if the user cancels
+        FullColorCode = RGB(192, 192, 192) ' Grey color
     End If
 
     ' Return the selected color code
