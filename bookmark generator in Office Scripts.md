@@ -11,6 +11,6 @@ Bookmark generator is good demo to show how the common task works, the main diff
 - you can import bookmark to any browser later
   
 ## Bookmark generator script
-- Bookmark-console.osts
-- Bookmark-sheet.osts 
+- [Bookmark-console.osts](https://github.com/robertluwang/hands-on-auto/blob/main/src/osts/Bookmark-console.osts)
+- [Bookmark-sheet.osts](https://github.com/robertluwang/hands-on-auto/blob/main/src/osts/Bookmark-sheet.osts) 
 
