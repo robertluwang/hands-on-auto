@@ -9,4 +9,7 @@ When you need dynamic changed bookmark for web app and ilo console for large sca
 - bookmark file will place all bookmark entries under a folder which name from active sheet
 - open bookmark file in notebook for review
 
+## VBA macro list
+[Sub Bookmark()](https://github.com/robertluwang/hands-on-auto/blob/main/src/vba/bookmark.vba)
+
 
