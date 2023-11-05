@@ -292,10 +292,36 @@ Sub FormatActiveSheet()
         ' Set cell borders
         .Borders.LineStyle = xlContinuous ' Solid line
         .Borders.color = RGB(0, 0, 0) ' Border color (adjust RGB values)
-
-        ' Autofit the selected range to wrap text
-        .WrapText = True
     End With
+
+    AutoFitCells
+
+End Sub
+
+Private Sub AutoFitCells()
+' auto fit each cells with proper width and height
+
+    Dim ws As Worksheet
+    Dim lastRow As Long
+    Dim lastColumn As Long
+    Dim i As Long
+    
+    ' Set the active sheet
+    Set ws = ActiveSheet
+    
+    ' Find the last row and last column with data
+    lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
+    lastColumn = ws.Cells.Find("*", SearchOrder:=xlByColumns, SearchDirection:=xlPrevious).Column
+    
+    For i = 1 To lastColumn
+        For j = 1 To lastRow
+            ws.Cells(j, i).EntireColumn.ColumnWidth = 80
+            ws.Cells(j, i).EntireRow.RowHeight = 80
+            ws.Cells(j, i).EntireColumn.AutoFit
+            ws.Cells(j, i).EntireRow.AutoFit
+        Next j
+    Next i
+    
 End Sub
 
 Private Function ChooseColor() As Long
