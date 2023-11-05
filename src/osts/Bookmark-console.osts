@@ -1,0 +1,38 @@
+function main(workbook: ExcelScript.Workbook) {
+  try {
+    const selectedRange = workbook.getSelectedRange();
+    const selectedValues = selectedRange.getValues();
+
+    let bookmarkContent = "<!DOCTYPE NETSCAPE-Bookmark-file-1>\n" +
+      "<META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=UTF-8\">\n" +
+      "<TITLE>Bookmarks</TITLE>\n" +
+      "<H1>Bookmarks</H1>\n" +
+      "<DL><p>\n";
+
+    const activeWorksheet = workbook.getActiveWorksheet();
+    const folderName = activeWorksheet.getName();
+
+    bookmarkContent += `    <DT><H3 ADD_DATE="${Date.now() / 1000}" LAST_MODIFIED="${Date.now() / 1000}">${folderName}</H3>\n`;
+    bookmarkContent += "    <DL><p>\n";
+
+    for (let i = 0; i < selectedValues.length; i++) {
+      const name = selectedValues[i][0];
+      const URL = selectedValues[i][1];
+
+      // Validate the URL
+      if (typeof URL === "string" && (URL as string).startsWith("http://") || (URL as string).startsWith("https://")) {
+        bookmarkContent += `        <DT><A HREF="${URL}">${name}</A>\n`;
+      } else {
+        throw new Error("URL should start with http or https!");
+      }
+    }
+
+    bookmarkContent += "    </DL><p>\n";
+    bookmarkContent += "</DL><p>";
+
+    // Display the generated bookmark content
+    console.log(bookmarkContent); // Display in the Excel console
+  } catch (error) {
+    console.log("Error: " + error.message);
+  }
+}
