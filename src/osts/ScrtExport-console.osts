@@ -1,0 +1,62 @@
+function main(workbook: ExcelScript.Workbook) {
+    try {
+        // Get the used range of the active worksheet
+        const usedRange = workbook.getSelectedRange();
+        const usedRangeValues = usedRange.getValues();
+
+        // Check if there are any rows in the used range
+        if (usedRangeValues.length === 0) {
+            console.log("No rows are selected.");
+            return;
+        }
+
+        // Check if the 'scrtExport' worksheet exists, and delete it if it does
+        const existingWorksheet = workbook.getWorksheet("scrtExport");
+        if (existingWorksheet) {
+            existingWorksheet.delete();
+        }
+
+        // Get the active worksheet
+        const activeWorksheet = workbook.getActiveWorksheet();
+        const sheetName = activeWorksheet.getName();
+
+        // Initialize the SecureCRT content
+        let secureCRTContent = `<?xml version="1.0" encoding="UTF-8"?>
+<VanDyke version="3.0">
+    <key name="Sessions">
+        <key name="${sheetName}">\n`;
+
+        for (const row of usedRangeValues) {
+            const HostName = row[0];
+            const HostIP = row[1];
+            const RemotePort = row[2];
+            const Username = row[3];
+
+            secureCRTContent += `            <key name="${sheetName}_${HostName}">
+                <dword name="[SSH2] Port">${RemotePort}</dword>
+                <string name="Hostname">${HostIP}</string>
+                <string name="Username">${Username}</string>
+                <dword name="Scrollback">50000</dword>
+            </key>\n`;
+        }
+
+        secureCRTContent += `        </key>
+    </key>
+</VanDyke>`;
+
+        // Add a new worksheet named 'scrtExport' right after the active sheet
+        const scrtExportWorksheet = workbook.addWorksheet("scrtExport", activeWorksheet.getPosition() + 1);
+        const rangeA1 = scrtExportWorksheet.getRange("A1");
+
+        // Output the generated SecureCRT content to the 'scrtExport' worksheet
+        rangeA1.setValue(secureCRTContent);
+
+        rangeA1.getUsedRange().getFormat().setColumnWidth(1000);
+        rangeA1.getUsedRange().getFormat().autofitRows();
+        rangeA1.getUsedRange().getFormat().autofitColumns();
+
+        console.log("SecureCRT content has been written to the 'scrtExport' worksheet.");
+    } catch (error) {
+        console.log("Error: " + error.message);
+    }
+}
