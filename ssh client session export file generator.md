@@ -9,6 +9,7 @@ SecureCRT and mobaXterm are most common used ssh clients in daily work.
 - run macro from excel Developer tab or create a customzied ribbon
   
 ## VBA macro list 
+[Source code](https://github.com/robertluwang/hands-on-auto/blob/main/src/vba/ssh%20client%20session%20export%20file%20generator.vba) here.
 
 **Sub ScrtExport()**
 
