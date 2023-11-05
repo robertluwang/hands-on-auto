@@ -3,6 +3,12 @@ function main(workbook: ExcelScript.Workbook) {
     const selectedRange = workbook.getSelectedRange();
     const selectedValues = selectedRange.getValues();
 
+    // Check if the 'bookmark' worksheet exists, and delete it if it does
+    const existingWorksheet = workbook.getWorksheet("bookmark");
+    if (existingWorksheet) {
+      existingWorksheet.delete();
+    }
+    
     // Create a new worksheet named 'bookmark'
     const newWorksheet = workbook.addWorksheet("bookmark");
     const rangeA1 = newWorksheet.getRange("A1");
@@ -38,8 +44,7 @@ function main(workbook: ExcelScript.Workbook) {
     //console.log(bookmarkContent); // Display in the Excel console
     rangeA1.setValue(bookmarkContent);
 
-    rangeA1.getUsedRange().getFormat().setRowHeight(400);
-    rangeA1.getUsedRange().getFormat().setColumnWidth(600);
+    rangeA1.getUsedRange().getFormat().setColumnWidth(1000);
     rangeA1.getUsedRange().getFormat().autofitRows()
     rangeA1.getUsedRange().getFormat().autofitColumns()
 
