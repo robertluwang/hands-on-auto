@@ -28,7 +28,7 @@ send expiration reminder email from outlook
 - scan record from active sheet with table column 'Customer' and 'Expiration Date'
 - reminder email with detail if expiration date less than 7 days or closet expiration date entries 
 
-Private Function GetInfoFromEmailBody(emailBody As String, infoLabel As String) As String
+**Private Function GetInfoFromEmailBody(emailBody As String, infoLabel As String) As String**
 
 get info from outlook email body with keyword
 
@@ -39,8 +39,12 @@ format whole range of visiable cells on active sheet
 - color: from color picker 
 - cell border: solid black line 
 - auto fit cell content
+
+**Private Sub AutoFitCells()**
+
+auto fit each cells with proper width and height
   
-Private Function ChooseColor() As Long
+**Private Function ChooseColor() As Long**
 
 color picker
 - pop up color picker 
