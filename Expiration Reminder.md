@@ -12,7 +12,9 @@ Assume you want to record expiration email in excel and send reminder email, her
 - run maco SendReminderEmail to send reminder email from outlook, to remind action needed if expiration date less than 7 days, otherwise send closet expiration date enties for reference
 - you can run macro from Developer tab or create customzied ribbon in excel 
 
-## VBA macro list 
+## VBA macro list
+
+[Source code](https://github.com/robertluwang/hands-on-auto/blob/main/src/vba/expiration-reminder.vba) here.
 
 **Sub GenExpirationList()**
 
