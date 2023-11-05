@@ -44,7 +44,7 @@ function main(workbook: ExcelScript.Workbook) {
     //console.log(bookmarkContent); // Display in the Excel console
     rangeA1.setValue(bookmarkContent);
 
-    rangeA1.getUsedRange().getFormat().setColumnWidth(1000);
+    rangeA1.getUsedRange().getFormat().setColumnWidth(600);
     rangeA1.getUsedRange().getFormat().autofitRows()
     rangeA1.getUsedRange().getFormat().autofitColumns()
 
