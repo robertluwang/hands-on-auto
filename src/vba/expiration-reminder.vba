@@ -1,6 +1,6 @@
 Sub SendReminderEmail()
 ' send expiration reminder email from outlook 
-' - scan record from active sheet with table column 'Customer'	'Expiration Date'
+' - scan record from active sheet with table column 'Customer' and 'Expiration Date'
 ' - reminder email with detail if expiration date less than 7 days or closet expiration date entries 
 
     Dim ws As Worksheet
@@ -19,6 +19,11 @@ Sub SendReminderEmail()
     
     ' Set the active sheet as the worksheet to extract data from
     Set ws = ActiveSheet
+
+    If Not (ws.Cells(1, 1).Value = "Customer" And ws.Cells(1, 2).Value = "Expiration Date") Then
+        MsgBox "Please make sure header with column 'Customer' and 'Expiration Date'!", vbExclamation
+        Exit Sub
+    End If
     
     ' Get the last row in column A
     lastRow = ws.Cells(ws.Rows.Count, 1).End(xlUp).Row
