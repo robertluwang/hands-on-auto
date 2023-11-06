@@ -51,7 +51,7 @@ function main(workbook: ExcelScript.Workbook) {
         // Output the generated SecureCRT content to the 'scrtExport' worksheet
         rangeA1.setValue(secureCRTContent);
 
-        rangeA1.getUsedRange().getFormat().setColumnWidth(1000);
+        rangeA1.getUsedRange().getFormat().setColumnWidth(600);
         rangeA1.getUsedRange().getFormat().autofitRows();
         rangeA1.getUsedRange().getFormat().autofitColumns();
 
