@@ -2,7 +2,7 @@
 
 Office Scripts allows to automate tasks by recording, editing, and running scripts in Excel on both of web and desktop, it is typescript.
 
-Bookmark generator is good demo to show how the common task works, the main difference than VBA on desktop is UI, which is not existing for Office Scripts, so I output generated bookmark file in new sheet or console as examples.
+Bookmark generator is good demo to show how the common task works, the main difference than VBA on desktop is UI, which is not existing for Office Scripts, also no way to output to external file, so I output generated bookmark file in new sheet or console as examples.
 
 ## How to run Bookmark-console
 - run script from Excel Automate tab 
