@@ -1,6 +1,6 @@
 Sub ScrtExport()
 ' secureCRT export session xml generator
-' - input data is selection of column Hostname,HostIP,RemotePort,Type,Username
+' - input data is selection of column Hostname,HostIP,RemotePort,Username
 ' - will generate session file .\Export\Session\scrt-<active-sheet>-<timestamp>.xml
 ' - all sessions will be under folder which name from active sheet
 ' - open generated secureCRT session file in notepad for review
@@ -34,7 +34,7 @@ Sub ScrtExport()
     SecureCRTContent = SecureCRTContent & "    <key name=""Sessions"">" & vbNewLine
     SecureCRTContent = SecureCRTContent & "        <key name=""" & CustomerName & """>" & vbNewLine
 
-    ' Build the SecureCRT content from selected rows with type validation
+    ' Build the SecureCRT content from selected rows
     For Each Row In SelectedRows.Rows
         Dim HostName As String
         Dim HostIP As String
@@ -77,7 +77,7 @@ End Sub
 
 Sub mobaExport()
 ' mobaXterm export session mxtsessions generator
-' - input data is selection of column Hostname,HostIP,RemotePort,Type,Username
+' - input data is selection of column Hostname,HostIP,RemotePort,Username
 ' - will generate session file .\Export\Session\\mobaxterm-<active-sheet>-<timestamp>.mxtsessions
 ' - all sessions will be under folder which name from active sheet
 ' - open generated mobaXterm session file in notepad for review
@@ -110,7 +110,7 @@ Sub mobaExport()
     MobaXtermContent = MobaXtermContent & "SubRep=" & CustomerName & vbNewLine
     MobaXtermContent = MobaXtermContent & "ImgNum=41" & vbNewLine
 
-    ' Build the MobaXterm content from selected rows with type validation
+    ' Build the MobaXterm content from selected rows
     For Each Row In SelectedRows.Rows
         Dim HostName As String
         Dim HostIP As String
