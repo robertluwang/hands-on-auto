@@ -45,9 +45,10 @@ function main(workbook: ExcelScript.Workbook) {
     rangeA1.setValue(bookmarkContent);
 
     rangeA1.getUsedRange().getFormat().setColumnWidth(600);
-    rangeA1.getUsedRange().getFormat().autofitRows()
-    rangeA1.getUsedRange().getFormat().autofitColumns()
+    rangeA1.getUsedRange().getFormat().autofitRows();
+    rangeA1.getUsedRange().getFormat().autofitColumns();
 
+    console.log("Bookmark content has been written to the 'bookmark' worksheet.");
   } catch (error) {
     console.log("Error: " + error.message);
   }
