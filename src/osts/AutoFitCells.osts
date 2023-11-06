@@ -3,6 +3,7 @@ function main(workbook: ExcelScript.Workbook) {
     let worksheet = workbook.getActiveWorksheet();
 
     worksheet.getUsedRange().getFormat().setColumnWidth(600);
+    worksheet.getUsedRange().getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.left)
     worksheet.getUsedRange().getFormat().autofitRows()
     worksheet.getUsedRange().getFormat().autofitColumns()
   } catch (error) {
