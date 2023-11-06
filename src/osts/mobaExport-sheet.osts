@@ -1,0 +1,53 @@
+function main(workbook: ExcelScript.Workbook) {
+    try {
+        // Get the used range of the active worksheet
+        const usedRange = workbook.getSelectedRange();
+        const usedRangeValues = usedRange.getValues();
+
+        // Check if there are any rows in the used range
+        if (usedRangeValues.length === 0) {
+            console.log("No rows are selected.");
+            return;
+        }
+
+        // Check if the 'mobaExport' worksheet exists, and delete it if it does
+        const existingWorksheet = workbook.getWorksheet("mobaExport");
+        if (existingWorksheet) {
+            existingWorksheet.delete();
+        }
+
+        // Get the active worksheet
+        const activeWorksheet = workbook.getActiveWorksheet();
+        const sheetName = activeWorksheet.getName();
+
+        // Initialize the MobaXterm content
+        let mobaXtermContent = "[Bookmarks]\n";
+        mobaXtermContent += `SubRep=${sheetName}\n`;
+        mobaXtermContent += "ImgNum=41\n";
+
+        // Build the MobaXterm content from selected rows
+        for (const row of usedRangeValues) {
+            const HostName = row[0];
+            const HostIP = row[1];
+            const RemotePort = row[2];
+            const Username = row[3];
+
+            mobaXtermContent += `${sheetName}_${HostName}= #109#0%${HostIP}%${RemotePort}%${Username}%%-1%-1%%%%%0%0%0%%%-1%0%0%0%%1080%%0%0%1%%0%%%%0%-1%-1%0#MobaFont%10%0%0%-1%15%236,236,236%30,30,30%180,180,192%0%-1%0%%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%0#0# #-1\n";`
+        }
+
+        // Add a new worksheet named 'mobaExport' right after the active sheet
+        const mobaExportWorksheet = workbook.addWorksheet("mobaExport");
+        const rangeA1 = mobaExportWorksheet.getRange("A1");
+
+        // Output the generated MobaXterm content to the 'mobaExport' worksheet
+        rangeA1.setValue(mobaXtermContent);
+
+        rangeA1.getUsedRange().getFormat().setColumnWidth(600);
+        rangeA1.getUsedRange().getFormat().autofitRows();
+        rangeA1.getUsedRange().getFormat().autofitColumns();
+
+        console.log("MobaXterm content has been written to the 'mobaExport' worksheet.");
+    } catch (error) {
+        console.log("Error: " + error.message);
+    }
+}
