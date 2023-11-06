@@ -317,6 +317,7 @@ Private Sub AutoFitCells()
         For j = 1 To lastRow
             ws.Cells(j, i).EntireColumn.ColumnWidth = 80
             ws.Cells(j, i).EntireRow.RowHeight = 80
+            ws.Cells(j, i).EntireColumn.HorizontalAlignment = xlHAlignLeft
             ws.Cells(j, i).EntireColumn.AutoFit
             ws.Cells(j, i).EntireRow.AutoFit
         Next j
