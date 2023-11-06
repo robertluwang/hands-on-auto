@@ -122,7 +122,7 @@ Sub mobaExport()
         RemotePort = Row.Cells(3).value
         Username = Row.Cells(4).value
 
-        MobaXtermContent = MobaXtermContent & HostName & "= #109#0%" & HostIP & "%" & RemotePort & "%" & Username & "%%-1%-1%%%%%0%0%0%%%-1%0%0%0%%1080%%0%0%1%%0%%%%0%-1%-1%0#MobaFont%10%0%0%-1%15%236,236,236%30,30,30%180,180,192%0%-1%0%%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%0#0# #-1" & vbNewLine
+        MobaXtermContent = MobaXtermContent & CustomerName & "_" & HostName & "= #109#0%" & HostIP & "%" & RemotePort & "%" & Username & "%%-1%-1%%%%%0%0%0%%%-1%0%0%0%%1080%%0%0%1%%0%%%%0%-1%-1%0#MobaFont%10%0%0%-1%15%236,236,236%30,30,30%180,180,192%0%-1%0%%xterm%-1%0%_Std_Colors_0_%80%24%0%1%-1%<none>%%0%0%-1%0#0# #-1" & vbNewLine
     Next Row
 
     ' Generate a unique MobaXterm filename based on the current date and time
