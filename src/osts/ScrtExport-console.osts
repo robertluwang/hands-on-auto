@@ -10,12 +10,6 @@ function main(workbook: ExcelScript.Workbook) {
             return;
         }
 
-        // Check if the 'scrtExport' worksheet exists, and delete it if it does
-        const existingWorksheet = workbook.getWorksheet("scrtExport");
-        if (existingWorksheet) {
-            existingWorksheet.delete();
-        }
-
         // Get the active worksheet
         const activeWorksheet = workbook.getActiveWorksheet();
         const sheetName = activeWorksheet.getName();
@@ -44,19 +38,10 @@ function main(workbook: ExcelScript.Workbook) {
     </key>
 </VanDyke>`;
 
-        // Add a new worksheet named 'scrtExport' right after the active sheet
-        const scrtExportWorksheet = workbook.addWorksheet("scrtExport", activeWorksheet.getPosition() + 1);
-        const rangeA1 = scrtExportWorksheet.getRange("A1");
-
-        // Output the generated SecureCRT content to the 'scrtExport' worksheet
-        rangeA1.setValue(secureCRTContent);
-
-        rangeA1.getUsedRange().getFormat().setColumnWidth(1000);
-        rangeA1.getUsedRange().getFormat().autofitRows();
-        rangeA1.getUsedRange().getFormat().autofitColumns();
-
-        console.log("SecureCRT content has been written to the 'scrtExport' worksheet.");
+        // Display the generated SecureCRT content in the Excel console
+        console.log(secureCRTContent);
     } catch (error) {
         console.log("Error: " + error.message);
     }
 }
+
