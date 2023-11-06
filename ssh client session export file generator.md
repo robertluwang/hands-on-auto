@@ -30,7 +30,7 @@ mobaXterm export session mxtsessions generator
 - open generated mobaXterm session file in notepad for review
 
 ## Office Scripts list 
-[Source code](https://github.com/robertluwang/hands-on-auto/tree/main/src/osts)) here.
+[Source code](https://github.com/robertluwang/hands-on-auto/tree/main/src/osts) here.
 
 **ScrtExport-console.osts**
 
