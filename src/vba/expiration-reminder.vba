@@ -318,6 +318,7 @@ Private Sub AutoFitCells()
             ws.Cells(j, i).EntireColumn.ColumnWidth = 80
             ws.Cells(j, i).EntireRow.RowHeight = 80
             ws.Cells(j, i).EntireColumn.HorizontalAlignment = xlHAlignLeft
+            ws.Cells(j, i).EntireColumn.WrapText = True
             ws.Cells(j, i).EntireColumn.AutoFit
             ws.Cells(j, i).EntireRow.AutoFit
         Next j
