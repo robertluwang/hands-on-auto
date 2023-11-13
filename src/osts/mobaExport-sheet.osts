@@ -42,7 +42,7 @@ function main(workbook: ExcelScript.Workbook) {
         // Output the generated MobaXterm content to the 'mobaExport' worksheet
         rangeA1.setValue(mobaXtermContent);
 
-        rangeA1.getUsedRange().getFormat().setColumnWidth(600);
+        rangeA1.getUsedRange().getFormat().setColumnWidth(400);
         rangeA1.getUsedRange().getFormat().setHorizontalAlignment(ExcelScript.HorizontalAlignment.left)
         rangeA1.getUsedRange().getFormat().autofitRows();
         rangeA1.getUsedRange().getFormat().autofitColumns();
